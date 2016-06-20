@@ -1,0 +1,5 @@
+*.html
+rsconnect/
+*cache*
+*_files
+*roster*
