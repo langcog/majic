@@ -1,0 +1,25 @@
+Grade,Class Number,Names,Class,Room,Random,Group,,Notes,Exclude,Homeroom
+1,1,Lauren Burke/Kenneth Hall,Inclusion,124,0.249034144,CNTL,"Randomization scheme: The highest N numbers in a group are MA, others are control",,0,BURKE/HALL
+1,2,Lauren Capilli,General Ed,128,0.365620953,MA,,,0,CAPILLI
+1,3,Elizabeth D‰ÛªIzzia/Jaclyn Jano,Inclusion,116,0.737041525,MA,,,0,D'IZZIA/JANO
+1,4,Angela Gigante/Tamara Chambers,Self-Contained Spec. Ed.,125,0.661398981,MA,,EXCLUDED 9/10,1,GIGANTI/CHAMBERS
+1,5,Jennifer Gutierrez,General Ed,118,0.298983379,CNTL,,,0,GUTIERREZ
+1,6,Tamara Emont,Spec. Ed Autistic,209,0.317850174,EXCLUDED,,,0,EMONT
+1,7,Martha Margulies,General Ed,129,0.026066665,CNTL,,,0,MARGULIES
+1,8,Danira Mata,Dual Language,228,0.438203516,MA,,,0,MATA
+1,9,Maria Meeks,General Ed,119,0.323620802,MA,,,0,MEEKS
+1,10,Ysoris Pazymino,Dual Language,226,0.035559636,CNTL,,,0,PAZYMINO
+1,11,Nicole Romano,Self-Contained Spec. Ed.,227,0.206550377,CNTL,,EXCLUDED 9/10,1,ROMANO
+1,12,Elizabeth Rosa,Dual Language,230,0.069087498,CNTL,,,0,ROSA
+1,13,Elizabeth Triano,Dual Language,225,0.201443277,MA,,,0,TRIANO
+2,1,Christina Chun,General Ed,306,0.822204978,MA,treated as dual,,0,CHUN
+2,2,Margaret Csaszar,Dual Language,218,0.291731948,MA,,,0,CSASZAR
+2,3,Diana Heredia,Bi-Lingual Transitional,221,0.07615132,CNTL,,,0,HEREDIA
+2,4,Kathy Kane,General Ed,305,0.134248925,CNTL,,,0,KANE
+2,5,Barbara Mittman,Self-Contained Spec. Ed.,207,0.778816579,MA,one more MA in gen ed,EXCLUDED 9/10,1,MITTMAN
+2,6,Mariana Mejia/Jessica Bradbury,Inclusion,206,0.016385527,CNTL,,,0,MEJIA/BRADBURY
+2,7,Debby Perry/Andrea Keenan,Inclusion,215,0.659363312,MA,,,0,PERRY/KEENAN
+2,8,Hashenka Pieries/Nicole Hunter,Inclusion,205,0.368026561,CNTL,one fewer in inclusion,,0,HUNTER/PIERIES
+2,9,Diocelina Rentas,Dual Language,219,0.98164951,MA,,,0,RENTAS
+2,10,Rharia Zorrilla,Dual Language,220,0.178273176,CNTL,,,0,ZORRILLA
+2,11,Leah Wooding,General Ed,231,0.667347509,MA,but assigned to MA,,0,WOODING
