@@ -230,6 +230,7 @@ gonogo %>%
   facet_grid(grade ~ year) + 
   geom_vline(data = ms, aes(xintercept = rt, col = group), 
              lty = 2)
+write_csv(gonogo, "data/gonogo.csv")
 ```
 
 ## Spatial WM
@@ -659,10 +660,11 @@ d %>%
   summarise(n=n())
 ```
 
+Save. 
 
-# Text for paper
-
-Since our study had a wide variety of measures, We first present brief descriptive results for each of our measures. 
+```{r}
+write_csv(d,"data/processed_data.csv")
+```
 
 
 
