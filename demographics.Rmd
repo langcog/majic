@@ -1,0 +1,50 @@
+---
+title: "MAJIC Study - Demographics"
+author: "Rose Schneider"
+date: "11/18/2016"
+output: html_document
+---
+
+Demographics for final sample in MAJIC study. 
+```{r include=FALSE}
+rm(list = ls())
+library(langcog)
+library(knitr)
+library(magrittr)
+library(dplyr)
+opts_chunk$set(cache=FALSE, warn=FALSE, error=FALSE, message=FALSE, echo=FALSE)
+```
+
+#Data processing
+```{r}
+#read in final sample data
+d <- read.csv("data/processed_data.csv")
+
+#read in full demographics data
+demo <- read.csv("data/metadata/demographics.csv")%>%
+  dplyr::rename(subid = SubjectID)
+
+#find SIDs that are in final sample that aren't in demos
+missing <- anti_join(demo, d, by = "subid")
+
+#filter out participants who are not included in final sample 
+final_demo <- demo %>%
+  filter(subid %in% d$subid)
+```
+
+#Demographics
+```{r}
+kable(final_demo %>% 
+        distinct(subid, Ethnicity, Grade_2015, Age_T1, Group)%>%
+        group_by(Group, Grade_2015) %>% 
+        summarise(n = n(), 
+                  mean_age = round(mean(Age_T1), digits = 2), 
+                  median_age = round(median(Age_T1), digits = 2), 
+                  sd_age = round(sd(Age_T1), digits = 2), 
+                  num_hispanic = sum(Ethnicity == "H"), 
+                  num_black = sum(Ethnicity == "B"), 
+                  num_other = sum(Ethnicity == "A" |
+                                    Ethnicity == "W" |
+                                    Ethnicity == "M")))
+
+```
