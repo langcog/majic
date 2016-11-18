@@ -174,7 +174,9 @@ missing_sittings <- read_csv("data/metadata/missing_sittings_key.csv")
 sittings <- left_join(sittings, missing_sittings) %>%
   mutate(exclude = ifelse(is.na(exclude), 0, exclude)) %>%
   filter(exclude != 1) %>%
-  mutate(roster_subid = ifelse(is.na(new_subid), subid, new_subid)) %>%
+  mutate(roster_subid = ifelse(is.na(new_subid), subid, new_subid), 
+         roster_grade = ifelse(is.na(new_grade), grade, new_grade), 
+         grade = roster_grade) %>%
   left_join(groups) 
 ```
 
@@ -669,7 +671,12 @@ ggplot(ms, aes(x = year, y = mean, col = group, pch = high_swm, lty = high_swm))
 # Final demographics
 
 ```{r}
-d %>%
+tmp <- d %>%
+  group_by(subid)%>%
+  summarise(n = n())
+
+#by year
+year <- d %>%
   group_by(group, grade, year) %>%
   summarise(n=n())
 ```
@@ -678,9 +685,14 @@ Exclusions: removing kids who don't have data at both time points
 ```{r}
 #filter down to 2015 and 2016
 t1 <- d %>%
-  filter(year == "2015")
+  filter(year == "2015")%>%
+  group_by(subid)%>%
+  summarise(n = n())
+
 t2 <- d %>%
-  filter(year == "2016")
+  filter(year == "2016")%>%
+  group_by(subid)%>%
+  summarise(n = n())
 
 #find out which SIDs are included in one year but not the other
 exclude1 <- anti_join(t1, t2, by = "subid")
