@@ -16,6 +16,7 @@ library(knitr)
 library(forcats)
 library(broom)
 library(purrr)
+library(magrittr)
 opts_chunk$set(cache=FALSE, warn=FALSE, error=FALSE, message=FALSE, echo=FALSE)
 ```
 
@@ -60,7 +61,6 @@ We had six primary outcome variables, corresponding to our six tasks: three in m
 As is evident from the Figure, all measures were higher for second graders than for first graders, and all measures showed positive growth over the course of the school year. Some showed larger changes than others due to features of the tasks themselves. For example, the place value measure was explicitly designed to capture content being learned during these two years of schooling and showed substantial movement. (Its distribution was also idiosynractic because an understanding of two-place place-value would allow a student to complete a particular subset of questions.) In contrast, the Go/No Go and Spatial WM tasks showed smaller changes relative to the amount of individual variation that we saw. 
 
 ```{r fig.width=8, fig.height=4, fig.cap="Figure 2. Histograms showing the distribution of scores from each task in our battery, split by grade level. Dashed lines show means. Upper panels show pre-test scores, lower panels show post-test scores."}
-
 ms <- d %>%
   group_by(task, time, grade) %>%
   summarise(mean = mean(score, na.rm=TRUE)) 
@@ -106,6 +106,10 @@ We also examined intervention uptake at the end of the study (Figure 3). We foun
 
 ```{r fig.width=5, fig.height = 4, fig.caption="Figure 3. Distribution of abacus uptake scores across grades. Plotting conventions are as above."}
 
+#read in exclusions from analysis
+exclusions <- read.csv("data/metadata/exclusions.csv")%>%
+  filter(Exclude == 1)
+
 abacus <- read_csv("data/paper/2016_AbacusFamiliarity.csv") %>%
   select(SubjectID, average) %>%
   rename(subid = SubjectID, 
@@ -114,6 +118,27 @@ abacus <- read_csv("data/paper/2016_AbacusFamiliarity.csv") %>%
               select(subid, grade)) %>%
   filter(!is.na(grade))
 
+#filter out excluded kids by exclusions df above
+abacus %<>%
+  filter(!subid %in% exclusions$subid)
+
+#NOTE: there are 7 participants who completed MA worksheet who did NOT receive treatment (confirmed on randomization csv). REMOVING manually for now.  
+abacus %<>%
+  filter(subid != "S2-09-05", subid != "S2-09-07", 
+         subid != "S2-09-08", subid != "S2-09-10", 
+         subid != "S2-09-13", subid != "S2-09-19",
+          subid != "S2-09-20")
+          
+tmp <- d %>%
+  distinct(subid, group, grade, year)%>%
+  filter(year == "2016", 
+         group == "Mental Abacus")
+
+tmp1 <- anti_join(tmp, abacus, by = "subid")
+
+#NOTE: There are two participants for whom we are missing abacus familiarity data; we have all other measures, but do not have abacus data for these SIDs:
+#S2-17-13
+#S1-10-13 --> This subject never completed MA familiarity worksheet in 2016
   
 ms <- abacus %>%
   group_by(grade) %>%
@@ -162,7 +187,7 @@ models %>%
          "Std Err" = std.error, 
          t = statistic) %>%
   mutate(p = 2*(1-pnorm(abs(t)))) %>%
-  kable(digits = c(NA, NA, 3, 3, 2, 4))
+  kable(digits = c(NA, NA, 3, 3, 2, 4), )
 ```
 
 ```{r fig.width=8, fig.height = 6, fig.cap="Figure 4. Performance on mathematics measures by time and grade. Error bars show 95% confidence intervals, computed by non-parametric bootstrap."}
@@ -230,7 +255,7 @@ pv.2t <- t.test(pv_2s_cntl, pv_2s_ma)
 ```
 
 
-Beginning with the math measures, we did not see numerical or statistical evidence of differential change in performance for either the in-house arithmetic or standardized WJ-III measures. This result does not replicate the findings of Barner et al. (2016), where differences on these measures emerged numerically after a single year of training. We discuss possible reasons for this disparity below. We did see a numerical trend towards the predicted time by condition interaction for the place-value measure, however. Students in the MA condition tended to make a larger gain in place value scores over the course of the study than those in the control group. This result was marginal in the mixed effects model ($p = .07$) so we interpret it with caution.^[In exploratory $t$-tests, we did see a significant post-test difference between intervention groups 
+Beginning with the math measures, we did not see numerical or statistical evidence of differential change in performance for either the in-house arithmetic or standardized WJ-III measures. This result does not replicate the findings of Barner et al. (2016), where differences on these measures emerged numerically after a single year of training. We discuss possible reasons for this disparity below. We did see a numerical trend towards the predicted time by condition interaction for the place-value measure, however. Students in the MA condition tended to make a larger gain in place value scores over the course of the study than those in the control group. This result was marginal in the mixed effects model ($p = .052$) so we interpret it with caution.^[In exploratory $t$-tests, we did see a significant post-test difference between intervention groups 
 ($t$(`r round(pv.t$parameter, digits=2)`) = `r round(pv.t$statistic, digits=2)`, $p$ = `r round(pv.t$p.value, digits=2)`). This test was not significant for first-graders alone, ($t$(`r round(pv.1t$parameter, digits=2)`) = `r round(pv.1t$statistic, digits=2)`, $p$ = `r round(pv.1t$p.value, digits=2)`) but was for second-graders ($t$(`r round(pv.2t$parameter, digits=2)`) = `r round(pv.2t$statistic, digits=2)`, $p$ = `r round(pv.2t$p.value, digits=2)`).] Nevertheless, it is consistent with a similar trend in Barner et al. (2016).
 
 In the cognitive measures, we did not see evidence of differential changes in performance for either matrix reasoning or spatial working memory. These results are consistent with our previous findings and suggest again that we were unable to detect MA-related changes to spatial working memory. 
