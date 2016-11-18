@@ -6,20 +6,22 @@ S1-06-02,301,,1,class excluded
 S1-06-04,301,,1,class excluded
 S1-06-04,300,,1,class excluded
 S1-06-05,301,,1,class excluded
-S2-03-05,301,,1,no consent
-S2-03-14,301,,1,no consent
+S2-03-05,301,S1-03-05,0,typo
+S2-03-14,301,S1-03-14,0,typo
 S2-03-16,301,,1,no consent
 S2-03=04,301,S2-03-04,0,typo
 S2-09-01,301,,1,no consent
 S2-14-04,301,,1,class excluded
-S2-14-07,301,,1,class excluded
-S2-14-07,301,,1,class excluded
-S2-14-07,300,,1,class excluded
-S2-14-07,300,,1,class excluded
-S2-14-07,302,,1,class excluded
-S2-14-08,301,,1,class excluded
-S2-14-08,301,,1,class excluded
-S2-14-08,300,,1,class excluded
+S2-14-07,301,,1,typo
+S2-14-07,301,,1,typo
+S2-14-07,300,,1,typo
+S2-14-07,300,,1,typo
+S2-14-07,302,,1,typo
+S2-14-08,301,S2-16-08,0,typo
+S2-14-08,301,S2-16-08,0,typo
+S2-14-08,300,S2-16-08,0,typo
 S2-14-10,301,,1,class excluded
 S2-16-19A,301,S2-16-19,0,typo
 S2-1709,301,S2-17-09,0,typo
+S2-03-15,301,S1-03-15,0,typo
+S2-15-01,301,S2-16-01,0,typo

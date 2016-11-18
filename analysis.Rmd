@@ -30,12 +30,14 @@ library(stringr)
 library(tidyr)
 library(lme4)
 
-
 rm(list=ls())
-theme_set(theme_mikabr() +
-            theme(panel.grid = element_blank(),
-                  strip.background = element_blank()))
-font <- "Open Sans"
+# theme_set(theme_mikabr() +
+#             theme(panel.grid = element_blank(),
+#                   strip.background = element_blank()))
+ theme_set(theme_bw() +
+             theme(panel.grid = element_blank(),
+                   strip.background = element_blank()))
+#font <- "Open Sans"
 ```
 
 # Runsheets and exclusions
@@ -58,6 +60,10 @@ groups <- kids %>%
   rename(roster_subid = SID,
          room = Homeroom,
          group = Group)
+
+#manually checked exclusions. Code for generating exclusions included at the end of analysis, but .csv generated from that process is used here for convenience. Children were excluded on the basis of a) errors in SIDs or b) absence at 1 of the timepoints
+exclusions <- read.csv("data/metadata/exclusions.csv") %>%
+  filter(Exclude == 1)
 ```
 
 Raw numbers.
@@ -160,6 +166,8 @@ anti_join(sittings, groups %>% rename(subid = roster_subid)) %>%
 
 Now read in the conversion table. (Done by hand by checking the runsheet for typos, notes etc, on the basis of `missing_sittings.csv`).
 
+11.18.16: Key has been updated manually to address other errors in SIDs by RMS. New SIDs (fixing for errors based on runsheet notes) manually checked.
+
 ```{r}
 missing_sittings <- read_csv("data/metadata/missing_sittings_key.csv")
 
@@ -168,6 +176,12 @@ sittings <- left_join(sittings, missing_sittings) %>%
   filter(exclude != 1) %>%
   mutate(roster_subid = ifelse(is.na(new_subid), subid, new_subid)) %>%
   left_join(groups) 
+```
+
+Next, run exclusions on the basis of data for only 1/2 timepoints, or for potential error in SID. Code originally used to determine which participants are included on this csv is at the end of this document. Details for exclusions in csv notes.
+```{r}
+sittings %<>%
+  filter(!subid %in% exclusions$subid)
 ```
 
 Computer testing numbers. Note that battery 301 is the combined battery. 
@@ -658,6 +672,20 @@ ggplot(ms, aes(x = year, y = mean, col = group, pch = high_swm, lty = high_swm))
 d %>%
   group_by(group, grade, year) %>%
   summarise(n=n())
+```
+
+Exclusions: removing kids who don't have data at both time points
+```{r}
+#filter down to 2015 and 2016
+t1 <- d %>%
+  filter(year == "2015")
+t2 <- d %>%
+  filter(year == "2016")
+
+#find out which SIDs are included in one year but not the other
+exclude1 <- anti_join(t1, t2, by = "subid")
+exclude2 <- anti_join(t2, t1, by = "subid")
+exclude <- bind_rows(exclude1, exclude2)
 ```
 
 Save. 

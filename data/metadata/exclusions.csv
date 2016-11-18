@@ -1,0 +1,30 @@
+subid,class_num,grade,group,year,ravens,gonogo,swm,pvAvg,arithmeticTotal,arithmeticAverage,woodcockTotal,Exclude,NOTES - 11.18/16
+S2-16-13,S2_16,second grade,MA,2015,16,0.907692308,3.625,0.09,9,0.19,10,1,No data for 2016; likely moved away or changed schools
+S2-15-01,S2_15,second grade,CNTL,2015,19,0.953846154,2.125,0,0,0,0,0,This is likely S2-16-01; notes indicate that S2-16-01 was run as S2-15-01 in 2015 - fixed on missing_sittings
+S2-10-17,S2_10,second grade,CNTL,2015,7,0.9,4.913043478,0,5,0.1,6,1,No data for 2016; likely moved away or changed schools
+S2-03-15,S2_03,second grade,MA,2015,10,0.361538462,1.125,0,0,0,0,0,"Run as S2-03-15 on computer in 2015 - this is fixed on the computer data, but needs to be fixed for paper data"
+S1-12-15,S1_12,first grade,CNTL,2015,7,0.853846154,3.916666667,0,2,0.04,5,1,"Missing data from 2016; was tested, but subject ID error, can't find in raw computer data"
+S1-12-13,S1_12,first grade,CNTL,2015,8,0.5,2.125,0,0,0,6,1,"There are two participants recorded with IDs s1-12-12 in the same class in 2016; we should exclude both of these participants, as I have no way of knowing which child belongs to which data"
+S1-12-12,S1-12,first grade,CNTL,2015,,,,,,,,1,"Added to exclusions manually because there are two participants recorded as S1-12-12 in 2016 in the same class, so unable to discern which data belongs to which SID"
+S1-12-10,S1_12,first grade,CNTL,2015,5,0.853846154,1.791666667,0,1,0.02,7,1,"Notes on runsheet indicate typo in 2016; can't find in raw data, should exclude"
+S1-10-16,S1_10,first grade,MA,2015,3,0.938461538,3.916666667,0,3,0.06,6,1,"I can't find this child on either the 2015 or 2016 runsheet; likely this is a typo, should exclude"
+S1-07-23,S1_07,first grade,CNTL,2015,5,0.746153846,5.631578947,0.09,6,0.13,10,1,No data for 2016; likely moved away or changed schools
+S1-07-15,S1_07,first grade,CNTL,2015,0,0.469230769,2.708333333,0,0,0,2,1,No data for 2016; likely moved away or changed schools
+S1-07-08,S1_07,first grade,CNTL,2015,8,0.769230769,3.541666667,0.09,5,0.1,8,1,"I can't find this child on either the 2015 or 2016 runsheet; likely this is a typo, should exclude"
+S1-07-06,S1_07,first grade,CNTL,2015,4,0.615384615,1.208333333,0,0,0,1,1,No data for 2016; likely moved away or changed schools
+S1-02-02,S1_02,first grade,CNTL,2015,6,0.576923077,2.956521739,0,0,0,6,1,No data for 2016; likely moved away or changed schools
+S2-16-08,S2_16,second grade,MA,2016,22,0.961538462,4.952380952,0.73,9,0.19,12,0,Run as S2-14-08 in 2015 - this is fixed on missing_sittings 
+S2-16-07,S2_16,second grade,MA,2016,6,0.784615385,1.708333333,0.45,7,0.15,13,1,"Run as S2-14-07; unfortunately, so was another SID, so we will need to exclude"
+S2-16-01,S2_16,second grade,MA,2016,22,0.838461538,4.5,0.91,13,0.27,12,0,Run as S2-15-01 in 2015; run as S2-16-01 in 2016
+S2-09-14,S2_09,second grade,CNTL,2016,15,0.861538462,4.625,0.18,14,0.29,15,1,Noted on runsheet as incomplete matrix in 2015
+S1-12-02,S1_12,first grade,CNTL,2016,10,0.823076923,3.125,0.18,4,0.08,9,1,No computer data in 2015 recorded
+S1-09-19,S1-09,first grade,CNTL,2015,,,,,,,,1,"Added to exclusions manually because there are two participants recorded as S1-109-19 in 2015 in the same class, so unable to discern which data belongs to which SID"
+S1-09-18,S1_09,first grade,CNTL,2016,9,0.684615385,4.833333333,0.36,9,0.19,11,1,"Possibly recorded as S1-09-19 in 2015; unfortunately, so was another SID, so we will need to exclude"
+S1-07-05,S1_07,first grade,CNTL,2016,8,0.723076923,1.333333333,0,4,0.08,5,1,"Run as S2-14-07; unfortunately, so was another SID, so we will need to exclude"
+S1-03-15,S1_03,first grade,MA,2016,14,0.730769231,2.791666667,0.27,4,0.08,11,0,Computer run as S2-03-15 in 2015; fixed on missing_sittings
+S1-03-14,S1_03,first grade,MA,2016,8,0.784615385,3.583333333,0.27,8,0.17,9,0,Computer run as S2-03-14 in 2015; fixed on missing_sittings
+S1-03-09,S1_03,first grade,MA,2016,0,0.638461538,1.916666667,0.18,8,0.17,10,1,Absent in 2015
+S1-03-06,S1_03,first grade,MA,2016,4,0.515384615,4.894736842,0,5,0.1,10,1,Absent in 2015
+S1-03-05,S1_03,first grade,MA,2016,18,0.561538462,5.208333333,0.91,16,0.33,13,0,Computer run as S2-03-05 in 2015; fixed on missing_sittings
+S1-03-04,S1_03,first grade,MA,2016,17,0.530769231,4.291666667,0.55,8,0.17,10,1,Absent in 2015
+S1-02-15,S1_02,first grade,CNTL,2016,21,0.830769231,3.291666667,0.64,5,0.1,10,1,"Runsheet says likely run as repeat participant, but not sure what number"
