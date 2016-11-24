@@ -21,7 +21,6 @@ opts_chunk$set(cache=FALSE, warn=FALSE, error=FALSE, message=FALSE, echo=FALSE)
 ```
 
 ```{r}
-rm(list=ls())
 theme_set(theme_bw() + 
             theme(panel.grid = element_blank(),
                   strip.background = element_blank(), 
@@ -325,6 +324,7 @@ ggplot(ms, aes(x = time, y = mean, col = group, pch = high_swm, lty = high_swm))
   facet_grid(grade~task) + 
   ylab("Mean Performance") + 
   xlab("Time Period") +
+  scale_shape_discrete(guide = FALSE) + 
   scale_colour_solarized(name = "Group") + 
   scale_linetype_discrete(name = "High Spatial Working Memory")
 

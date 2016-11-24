@@ -30,14 +30,9 @@ library(stringr)
 library(tidyr)
 library(lme4)
 
-rm(list=ls())
-# theme_set(theme_mikabr() +
-#             theme(panel.grid = element_blank(),
-#                   strip.background = element_blank()))
- theme_set(theme_bw() +
+theme_set(theme_bw() +
              theme(panel.grid = element_blank(),
                    strip.background = element_blank()))
-#font <- "Open Sans"
 ```
 
 # Runsheets and exclusions
@@ -706,37 +701,3 @@ Save.
 write_csv(d,"data/processed_data.csv")
 ```
 
-
-
-<!-- ## Relations between math measures -->
-
-<!-- Correlations. -->
-
-<!-- ```{r} -->
-<!-- kable(cor(d %>% ungroup %>%  -->
-<!--             select(woodcockTotal, arithmeticTotal, pvAvg)), digits = 2) -->
-
-<!-- cor.test(d$woodcockTotal, d$arithmeticTotal) -->
-<!-- cor.test(d$woodcockTotal, d$pvAvg) -->
-<!-- cor.test(d$arithmeticTotal, d$pvAvg) -->
-<!-- ``` -->
-
-<!-- # Relations between all measures -->
-
-<!-- ```{r} -->
-<!-- kable(cor(d %>% ungroup %>%  -->
-<!--             select(ravens, gonogo, swm,  -->
-<!--                    woodcockTotal, arithmeticTotal, pvAvg)), digits = 2) -->
-
-<!-- cor.test(d$ravens, d$woodcockTotal) -->
-<!-- cor.test(d$ravens, d$arithmeticTotal) -->
-<!-- cor.test(d$ravens, d$pvAvg) -->
-
-<!-- cor.test(d$swm, d$woodcockTotal) -->
-<!-- cor.test(d$swm, d$arithmeticTotal) -->
-<!-- cor.test(d$swm, d$pvAvg) -->
-
-<!-- cor.test(d$gonogo, d$woodcockTotal) -->
-<!-- cor.test(d$gonogo, d$arithmeticTotal) -->
-<!-- cor.test(d$gonogo, d$pvAvg) -->
-<!-- ``` -->
